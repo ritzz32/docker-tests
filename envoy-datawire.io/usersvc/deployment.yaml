@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: usersvc
-        image: {{REGISTRY}}usersvc:step1      
+        image: ritzz32/dw-usersvc
         resources: {}
       restartPolicy: Always
 status: {}

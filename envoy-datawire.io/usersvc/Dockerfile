@@ -1,6 +1,6 @@
 # Base our image on the latest Envoy image.
 #FROM lyft/envoy:latest
-FROM dwflynn/envoy-debug:20170501
+FROM python:3.6.8-alpine3.8
 
 MAINTAINER Datawire <flynn@datawire.io>
 LABEL PROJECT_REPO_URL         = "git@github.com:datawire/envoy-steps.git" \
@@ -16,10 +16,7 @@ LABEL PROJECT_REPO_URL         = "git@github.com:datawire/envoy-steps.git" \
 # blindly hack up this file.
 
 # We need curl, pip, and dnsutils (for nslookup).
-RUN apt-get update && apt-get -q install -y \
-    curl \
-    python-pip \
-    dnsutils
+RUN apk --no-cache add curl
 
 # Set WORKDIR to /application which is the root of all our apps then COPY 
 # only requirements.txt to avoid screwing up Docker caching and causing a
