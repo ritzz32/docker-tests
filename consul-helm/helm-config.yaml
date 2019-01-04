@@ -1,0 +1,50 @@
+global:
+  enabled: false
+  image: consul:1.4.0
+  imageK8S: hashicorp/consul-k8s:0.3.0
+  datacenter: dev-shared
+
+server:
+  enabled: true
+  image: consul:1.4.0
+  replicas: 5
+  bootstrapExpect: 3
+  storage: 2Gi
+  storageClass: local-storage
+  connect: true
+  # Resources are defined as a formatted multi-line string:
+  resources: |
+    requests:
+      memory: "2Gi"
+    limits:
+     memory: "10Gi"
+  disruptionBudget:
+    enabled: true
+    maxUnavailable: 1
+
+client:
+  enabled: false
+  image: consul:1.4.0
+  grpc: true
+  resources: |
+    requests:
+      memory: "2Gi"
+    limits:
+     memory: "10Gi"
+
+dns:
+  enabled: false
+
+ui:
+  enabled: true
+  service:
+    enabled: true
+    type: ClusterIP
+
+syncCatalog:
+  enabled: false
+  toConsul: false
+  toK8S: false
+
+connectInject:
+  enabled: false
