@@ -7,30 +7,30 @@ global:
 server:
   enabled: true
   image: consul:1.4.0
-  replicas: 5
+  replicas: 3
   bootstrapExpect: 3
   storage: 2Gi
-  storageClass: local-storage
+  storageClass: rook-ceph-block
   connect: true
   # Resources are defined as a formatted multi-line string:
   resources: |
     requests:
       memory: "2Gi"
     limits:
-     memory: "10Gi"
+      memory: "10Gi"
   disruptionBudget:
     enabled: true
     maxUnavailable: 1
 
 client:
-  enabled: false
+  enabled: true
   image: consul:1.4.0
   grpc: true
   resources: |
     requests:
       memory: "2Gi"
     limits:
-     memory: "10Gi"
+      memory: "10Gi"
 
 dns:
   enabled: false
