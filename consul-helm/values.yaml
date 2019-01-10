@@ -44,7 +44,8 @@ ui:
 syncCatalog:
   enabled: false
   toConsul: false
-  toK8S: false
+  toK8S: true
+  syncClusterIPServices: false
 
 connectInject:
   enabled: false
