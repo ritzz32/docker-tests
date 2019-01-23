@@ -1,5 +1,6 @@
 global:
   enabled: false
+  domain: dev-shared.consul
   image: consul:1.4.0
   imageK8S: hashicorp/consul-k8s:0.3.0
   datacenter: dev-shared
@@ -33,7 +34,7 @@ client:
       memory: "10Gi"
 
 dns:
-  enabled: false
+  enabled: true
 
 ui:
   enabled: true
@@ -42,7 +43,7 @@ ui:
     type: ClusterIP
 
 syncCatalog:
-  enabled: false
+  enabled: true
   toConsul: false
   toK8S: true
   syncClusterIPServices: false
