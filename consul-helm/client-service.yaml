@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: consul
+  namespace: dev-shared
+  labels:
+    app: consul
+spec:
+  ports:
+    - port: 8500
+      targetPort: 8500
+      name: http
+    - port: 8502
+      targetPort: 8502
+      name: grpc
+  selector:
+    app: consul
+    component: client
+    release: consul-dev-shared
+

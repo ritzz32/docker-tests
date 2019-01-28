@@ -2,7 +2,7 @@ global:
   enabled: false
   domain: dev-test.consul
   image: consul:1.4.0
-  imageK8S: hashicorp/consul-k8s:0.3.0
+  imageK8S: hashicorp/consul-k8s:0.4.0
   datacenter: dev-test
 
 server:
@@ -47,6 +47,7 @@ syncCatalog:
   toConsul: false
   toK8S: true
   syncClusterIPServices: false
+  nodePortSyncType: ExternalOnly
 
 connectInject:
   enabled: false
